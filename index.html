@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 검색엔진에 안 걸리게 한다. 주소를 아는 사람만 보는 자료다. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<style>
+:root{color-scheme:light}
+body{margin:0;font:14px/1.5 system-ui,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>타운샌드위치 네이버 리뷰</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#fbfbfb; --plate:#ffffff; --plate-2:#f5f5f5; --row-alt:#fbfbfb;
+  --ink:#2b2b2b; --ink-2:#434444; --ink-3:#7b7b7b;
+  --rule:#e1e1e1; --rule-2:#f0f2f5;
+  --accent:#13bd7e; --accent-soft:#f3fdfa;
+  --good:#06a96c; --good-bg:#f3fdfa;
+  --bar:#34464b; --bar-soft:#f0f2f5;
+  --warn:#fd8700; --warn-bg:#fffaf3;
+  --dead:#fe493d;
+  --ask:#1c6c73; --ask-bg:#f4f8f8;
+  --shadow:0 2px 5px rgba(0,0,0,.12);
+  --sans:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased}
+.n{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+.wrap{max-width:1000px; margin:0 auto; padding-inline:20px; padding-block:0 64px}
+@media (max-width:520px){ .wrap{padding-inline:16px} }
+
+/* 헤더 */
+.masthead{padding-block:30px 0}
+.eyebrow{font-size:12.5px; color:var(--ink-3); margin:0 0 6px}
+.masthead h1{margin:0; font-size:clamp(26px,5.2vw,38px); font-weight:700; letter-spacing:-0.06px}
+.masthead .lede{margin:10px 0 0; color:var(--ink-2); max-width:56ch; font-size:14.5px}
+.legend{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px}
+.lg{font-size:12px; padding:5px 10px; border:1px solid var(--rule); background:var(--plate); border-radius:2px; color:var(--ink-2)}
+.lg b{font-weight:700}
+.lg.r{border-left:2px solid var(--good)} .lg.r b{color:var(--good)}
+.lg.b{border-left:2px solid var(--warn)} .lg.b b{color:var(--warn)}
+
+/* 탭 */
+.tabs{position:sticky; top:0; z-index:20; background:var(--plate); border-block:1px solid var(--rule);
+  display:flex; overflow-x:auto; scrollbar-width:thin; margin-top:22px}
+.tabs::-webkit-scrollbar{height:3px} .tabs::-webkit-scrollbar-thumb{background:var(--rule)}
+.tab{flex:none; appearance:none; background:transparent; border:0; border-bottom:2px solid transparent;
+  margin-bottom:-1px; padding:15px 18px 13px; cursor:pointer; white-space:nowrap; font-family:var(--sans);
+  font-size:15.5px; font-weight:700; color:var(--ink-3); line-height:1}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent); outline-offset:-3px}
+@media (max-width:520px){ .tab{padding:13px 12px 11px; font-size:13.5px} }
+
+/* 탭 머리 한 줄 결론 */
+.lead{margin-top:24px; padding:18px 20px; border:1px solid var(--rule); background:var(--plate);
+  border-left:3px solid var(--bar); box-shadow:var(--shadow)}
+.lead.good{border-left-color:var(--good); background:var(--good-bg)}
+.lead.warn{border-left-color:var(--warn); background:var(--warn-bg)}
+.lead.ask{border-left-color:var(--ask); background:var(--ask-bg)}
+.lead .t{font-size:11.5px; font-weight:700; color:var(--ink-3); letter-spacing:.02em; margin-bottom:5px}
+.lead h2{margin:0; font-size:clamp(18px,3.4vw,23px); font-weight:700; line-height:1.4; letter-spacing:-0.06px}
+.lead p{margin:9px 0 0; font-size:14px; color:var(--ink-2); max-width:64ch}
+.lead b{color:var(--ink)}
+.lead.good h2{color:var(--good)} .lead.warn h2{color:#b45f00} .lead.ask h2{color:var(--ask)}
+
+/* 큰 숫자판 */
+.kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule);
+  border:1px solid var(--rule); margin-top:16px}
+@media (max-width:760px){ .kpis{grid-template-columns:repeat(2,1fr)} }
+.kpi{background:var(--plate); padding:16px 16px 15px}
+.kpi .k{font-size:12.5px; color:var(--ink-3)}
+.kpi .v{font-size:30px; font-weight:700; line-height:1.15; margin-top:3px; letter-spacing:-0.06px}
+.kpi .s{font-size:12.5px; color:var(--ink-2); margin-top:3px}
+.kpi.good .v{color:var(--good)} .kpi.warn .v{color:var(--dead)}
+.kpi .yoy{font-size:12px; font-weight:700; margin-left:6px}
+.kpi .yoy.up{color:var(--good)} .kpi .yoy.dn{color:var(--dead)}
+
+/* 섹션 */
+.sec{margin-top:30px}
+.sec h3{margin:0 0 4px; font-size:17.5px; font-weight:700; letter-spacing:-0.06px;
+  display:flex; align-items:center; gap:9px; flex-wrap:wrap}
+.sec .sub{margin:0; font-size:13.5px; color:var(--ink-3); max-width:66ch}
+.src{font-size:11px; font-weight:700; padding:3px 7px; border-radius:2px; white-space:nowrap}
+.src.r{background:var(--good-bg); color:var(--good); border:1px solid #cceee0}
+.src.b{background:var(--warn-bg); color:#b45f00; border:1px solid #f3ddbe}
+
+/* 카드 */
+.cards{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:14px}
+@media (max-width:700px){ .cards{grid-template-columns:1fr} }
+.card{background:var(--plate); border:1px solid var(--rule); padding:16px 18px; display:flex; flex-direction:column; gap:7px}
+.card.good{border-left:3px solid var(--good)}
+.card.warn{border-left:3px solid var(--warn)}
+.card .big{font-size:27px; font-weight:700; line-height:1.1; letter-spacing:-0.06px}
+.card.good .big{color:var(--good)} .card.warn .big{color:#b45f00}
+.card h4{margin:0; font-size:15.5px; font-weight:700; line-height:1.4}
+.card p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.6}
+.card b{color:var(--ink)}
+
+/* 표 */
+.tw{overflow-x:auto; border:1px solid var(--rule); background:var(--plate); margin-top:14px}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:14px}
+thead th{background:var(--plate-2); text-align:left; font-weight:700; font-size:12.5px; color:var(--ink-3);
+  padding:11px 15px; border-bottom:1px solid var(--rule); white-space:nowrap}
+th.r,td.r{text-align:right}
+tbody td{padding:12px 15px; border-bottom:1px solid var(--rule); vertical-align:top; font-size:14.5px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr.hl td{background:var(--good-bg)}
+tbody tr.wl td{background:var(--warn-bg)}
+td.r span{font-variant-numeric:tabular-nums; font-weight:700}
+td.note{font-size:13px; color:var(--ink-2)}
+.up{color:var(--good); font-weight:700} .dn{color:var(--dead); font-weight:700} .flat{color:var(--ink-3)}
+
+/* 막대 */
+.bars{background:var(--plate); border:1px solid var(--rule); padding:16px 18px 13px; margin-top:14px}
+.bar{display:grid; grid-template-columns:minmax(0,132px) 1fr auto; gap:12px; align-items:center; padding:5px 0}
+@media (max-width:560px){ .bar{grid-template-columns:minmax(0,92px) 1fr auto; gap:9px} }
+.bar .l{font-size:13.5px; color:var(--ink-2); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.bar .l.hi{color:var(--good); font-weight:700}
+.tr{background:var(--bar-soft); height:16px; border-radius:2px}
+.fi{height:100%; border-radius:2px; background:var(--bar)}
+.fi.hi{background:var(--good)} .fi.wn{background:var(--warn)}
+.bar .v{font-size:14px; font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums}
+.bar .v small{color:var(--ink-3); font-size:12px; font-weight:400; margin-left:4px}
+.split{border-top:1px dashed var(--rule); margin:9px 0 5px; padding-top:7px; font-size:12px; color:var(--ink-3)}
+
+/* 전년대비 이중 막대 */
+.dbars{background:var(--plate); border:1px solid var(--rule); padding:16px 18px 13px; margin-top:14px}
+.db{display:grid; grid-template-columns:minmax(0,50px) 1fr auto; gap:12px; align-items:center;
+  padding:6px 0; border-bottom:1px solid var(--rule-2)}
+.db:last-of-type{border-bottom:0}
+.db .l{font-size:13.5px; font-weight:700; color:var(--ink-2)}
+.db .pr{display:grid; gap:3px}
+.dt{background:var(--bar-soft); height:11px; border-radius:2px}
+.df{height:100%; border-radius:2px}
+.df.p{background:#c8d0d2} .df.c{background:var(--bar)} .df.c.hi{background:var(--warn)}
+.db .vv{font-size:13px; text-align:right; white-space:nowrap; line-height:1.45; font-variant-numeric:tabular-nums}
+.db .vv .a{color:var(--ink-3)} .db .vv .b{font-weight:700}
+.db .vv .d{display:block; font-size:12px; font-weight:700}
+.lgd{display:flex; gap:14px; font-size:12px; color:var(--ink-3); margin-top:10px}
+.lgd i{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; vertical-align:-1px}
+.lgd i.p{background:#c8d0d2} .lgd i.c{background:var(--bar)}
+
+/* 인용 */
+.qs{display:grid; gap:9px; margin-top:14px}
+.q{background:var(--plate); border:1px solid var(--rule); border-left:3px solid var(--rule-2);
+  padding:13px 16px; font-size:14px; color:var(--ink-2); line-height:1.6}
+.q b{color:var(--ink)}
+.q .m{display:block; font-size:12px; color:var(--ink-3); margin-top:6px}
+
+/* 메모 */
+.memo{margin-top:12px; font-size:13.5px; color:var(--ink-2); line-height:1.65}
+.memo b{color:var(--ink)}
+.flag{margin-top:13px; background:var(--warn-bg); border-left:3px solid var(--warn); padding:12px 15px;
+  font-size:13.5px; color:var(--ink-2); line-height:1.65}
+.flag b{color:var(--ink)}
+
+/* 스레드 초안 */
+.thwrap{display:grid; gap:16px; margin-top:14px}
+.thcard{background:var(--plate); border:1px solid var(--rule); overflow:hidden}
+.thhead{display:flex; gap:9px; align-items:center; flex-wrap:wrap; padding:12px 16px;
+  border-bottom:1px solid var(--rule-2); background:var(--plate-2)}
+.thhead .no{font-size:12px; font-weight:700; color:var(--ink-3)}
+.thhead .ttl{font-size:14.5px; font-weight:700}
+.thhead .kd{font-size:11px; font-weight:700; padding:3px 7px; border-radius:2px;
+  background:var(--good-bg); color:var(--good); border:1px solid #cceee0}
+.thhead .kd.g{background:var(--ask-bg); color:var(--ask); border-color:#cfe0e0}
+.thpost{padding:18px 20px; display:flex; gap:13px; align-items:flex-start}
+.thav{flex:none; width:36px; height:36px; border-radius:50%; background:var(--bar);
+  color:#fff; font-size:15px; font-weight:700; display:flex; align-items:center; justify-content:center}
+.thbody{min-width:0; flex:1}
+.thbody .who{font-size:13.5px; font-weight:700; margin-bottom:5px}
+.thbody .txt{font-size:15px; line-height:1.62; white-space:pre-wrap; word-break:break-word}
+.thbody .tag{display:inline-block; margin-top:10px; font-size:13.5px; color:var(--ask); font-weight:500}
+.thmeta{padding:0 20px 16px; display:grid; gap:9px}
+.thmeta .row{font-size:13px; color:var(--ink-2); line-height:1.62}
+.thmeta .row b{color:var(--ink)}
+.thmeta .warn{background:var(--warn-bg); border-left:3px solid var(--warn); padding:11px 14px;
+  font-size:13px; color:var(--ink-2); line-height:1.62}
+.thmeta .warn b{color:#b45f00}
+.thcount{font-size:12px; color:var(--ink-3); text-align:right; padding:0 20px 12px}
+
+/* 질문 카드 */
+.asks{display:grid; gap:11px; margin-top:14px}
+.askc{background:var(--plate); border:1px solid var(--rule); border-left:3px solid var(--ask); padding:16px 18px}
+.askc .qn{font-size:12px; font-weight:700; color:var(--ask); margin-bottom:5px}
+.askc h4{margin:0 0 7px; font-size:16px; font-weight:700; line-height:1.45}
+.askc p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.62}
+.askc p+p{margin-top:5px}
+.askc b{color:var(--ink)}
+
+footer{margin-top:26px; padding-top:16px; border-top:1px solid var(--rule); font-size:12.5px; color:var(--ink-3)}
+</style>
+
+<div class="wrap">
+<header class="masthead">
+  <p class="eyebrow">2026년 9월 13일 · 함수정 정리</p>
+  <h1>타운샌드위치 네이버 리뷰</h1>
+  <p class="lede">잠실점·역삼점에 쌓인 리뷰 <b>1,097건</b>을 전부 내려받아 읽었습니다.
+     손님이 뭘 좋아하고 뭘 안 쓰는지, 작년 같은 기간과 견줘 어떻게 달라졌는지 정리했습니다.</p>
+  <div class="legend">
+    <span class="lg r"><b>영수증 리뷰</b> — 결제한 손님만 씁니다. 916건</span>
+    <span class="lg b"><b>블로그</b> — 누구나 씁니다. 체험단 포함. 181건</span>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" id="tabs">
+  <button class="tab" role="tab" data-go="home" aria-selected="true">요약</button>
+  <button class="tab" role="tab" data-go="week" aria-selected="false">주차별 기록</button>
+  <button class="tab" role="tab" data-go="month" aria-selected="false">월별 기록</button>
+  <button class="tab" role="tab" data-go="good" aria-selected="false">잘되고 있는 것</button>
+  <button class="tab" role="tab" data-go="gap" aria-selected="false">아쉬운 것</button>
+  <button class="tab" role="tab" data-go="words" aria-selected="false">키워드</button>
+  <button class="tab" role="tab" data-go="cmp" aria-selected="false">역삼점과 비교</button>
+  <button class="tab" role="tab" data-go="plan" aria-selected="false">액션플랜</button>
+  <button class="tab" role="tab" data-go="th" aria-selected="false">스레드 초안</button>
+</nav>
+
+<!-- 요약 -->
+<div class="panel" data-tab="home">
+  <div class="lead">
+    <div class="t">한 줄로</div>
+    <h2>제품은 문제가 없습니다. 새 손님도 잘 들어옵니다.<br>다시 오시는 분이 적은 게 지금 유일한 구멍입니다.</h2>
+    <p>맛·신선도는 역대 최고 점수고 8월엔 리뷰가 <b>역대 가장 많이</b> 올라왔습니다.
+       그런데 <b>두 번째로 오신 손님은 100명 중 7명</b>입니다.</p>
+  </div>
+  <div class="kpis" id="kpi"></div>
+  <div class="sec">
+    <h3>작년 같은 기간과 비교 <span class="src r">영수증</span></h3>
+    <p class="sub">해가 안 끝났으니 <b>1~9월끼리</b> 맞춰 비교했습니다.</p>
+    <div class="tw"><table id="yoyTop"></table></div>
+    <div class="flag" id="yoyFlag"></div>
+  </div>
+  <div class="sec">
+    <h3>가게 걸어온 길 <span class="src r">영수증</span></h3>
+    <p class="sub">리뷰가 2021년 5월부터 있습니다. 네이버 계정이 이어져 있어 옛 기록이 그대로 남아 있습니다.</p>
+    <div class="tw"><table id="histTbl"></table></div>
+    <p class="memo"><b>네이버에 보이는 리뷰 651건·평점 4.89는 5년치를 합한 숫자입니다.</b>
+       잠실점으로 옮기신 뒤 쌓인 건 <b>219건</b>입니다. 대외 자료에 쓰실 때 참고하시면 좋겠습니다.</p>
+  </div>
+</div>
+
+<!-- 주차별 기록 -->
+<div class="panel" data-tab="week" hidden>
+  <div class="lead">
+    <div class="t">주차별 기록</div>
+    <h2 id="wkHead">매주 화요일에 다시 재서 한 줄씩 쌓습니다</h2>
+    <p id="wkLede">숫자 하나가 좋아졌다 나빠졌다 하는 건 신경 쓰지 않으셔도 됩니다.
+       <b>몇 주 쌓였을 때 어느 쪽으로 가고 있는지</b>를 보는 자리입니다.</p>
+  </div>
+  <div class="kpis" id="wkKpi"></div>
+  <div class="sec">
+    <h3>이번 주 새로 올라온 리뷰 <span class="src r">영수증</span></h3>
+    <p class="sub" id="wkNewSub"></p>
+    <div class="qs" id="wkNew"></div>
+  </div>
+  <div class="sec">
+    <h3>주차별 표 <span class="src r">영수증</span></h3>
+    <div class="tw"><table id="wkTbl"></table></div>
+    <p class="memo"><b>주당 리뷰가 8건 안팎입니다.</b> 그래서 재방문·친절 같은 비율은
+       한 주만에 크게 움직이지 않습니다. <b>한 달쯤 쌓여야 방향이 보입니다</b> —
+       한 주 등락에 따라 뭘 바꾸지는 마십시오.</p>
+  </div>
+</div>
+
+<!-- 월별 기록 -->
+<div class="panel" data-tab="month" hidden>
+  <div class="lead">
+    <div class="t">월별 기록 · 전달 대비</div>
+    <h2 id="moHead">달 단위로 보면 흐름이 보입니다</h2>
+    <p id="moLede"></p>
+  </div>
+  <div class="kpis" id="moKpi"></div>
+  <div class="warnstrip" id="moWarn"></div>
+  <div class="sec">
+    <h3>월별 리뷰 수 <span class="src r">영수증</span></h3>
+    <div class="dbars" id="moBars"></div>
+  </div>
+  <div class="sec">
+    <h3>잠실점 월별 지표 <span class="src r">영수증</span></h3>
+    <p class="sub">괄호 안은 <b>전달 대비</b>입니다. 표본(n)이 작은 달은 숫자가 크게 튑니다.</p>
+    <div class="tw"><table id="moTblJ"></table></div>
+  </div>
+  <div class="sec">
+    <h3>역삼점 월별 지표 <span class="src r">영수증</span></h3>
+    <p class="sub">역삼점은 월 2~14건이라 <b>비율은 거의 못 읽습니다.</b> 리뷰 수만 보십시오.</p>
+    <div class="tw"><table id="moTblY"></table></div>
+  </div>
+</div>
+
+<!-- 잘되고 있는 것 -->
+<div class="panel" data-tab="good" hidden>
+  <div class="lead good">
+    <div class="t">잘되고 있는 것</div>
+    <h2>맛·신선도·빵은 손님이 먼저 꺼내는 강점입니다</h2>
+    <p>키워드 점수가 옛 매장 때보다 <b>올랐습니다</b>. 역삼점보다도 높습니다.</p>
+  </div>
+  <div class="cards" id="goodCards"></div>
+  <div class="sec">
+    <h3>손님이 고른 키워드 <span class="src r">영수증</span></h3>
+    <p class="sub">네이버가 보여주는 항목을 손님이 직접 눌러 고른 값입니다. 잠실점 219건 기준.</p>
+    <div class="bars" id="kwBars"></div>
+  </div>
+  <div class="sec">
+    <h3>아직 안 쓰고 계신 것 — 커피 <span class="src r">영수증</span></h3>
+    <p class="sub">샌드위치 가게인데 <b>커피 얘기를 먼저 꺼내는 리뷰가 15%</b>입니다. 역삼점엔 이런 말이 없습니다.</p>
+    <div class="qs">
+      <div class="q">잠실 샌드위치 맛집.. 그리고 사실 <b>숨겨진 커피 맛집</b> 🫢<span class="m">2026년 4월 24일</span></div>
+      <div class="q">커피도 진짜 맛있습니다 / <b>싸구려 커피 맛 아님</b> ❌❌❌<span class="m">2026년 4월 30일</span></div>
+      <div class="q">커피는 안 마셨지만 <b>커피가 진짜 진또배기</b>입니다 ㅎㅎ<span class="m">2026년 7월 25일</span></div>
+    </div>
+    <p class="memo">메뉴판에서는 사이드인데 손님은 이걸 <b>따로 기억</b>하고 계십니다.
+       혼자 오래 앉아 계시는 손님이 많은 매장이라 더 그렇습니다.</p>
+  </div>
+</div>
+
+<!-- 아쉬운 것 -->
+<div class="panel" data-tab="gap" hidden>
+  <div class="lead warn">
+    <div class="t">아쉬운 것</div>
+    <h2>다시 오시는 손님이 100명 중 7명입니다</h2>
+    <p>새 손님은 역대 최고로 들어오는데 두 번째 방문이 안 만들어집니다.
+       <b>새 손님 유입이 멈추면 매출이 같이 꺼지는 구조</b>입니다.</p>
+  </div>
+  <div class="cards" id="gapCards"></div>
+  <div class="sec">
+    <h3>월별 재방문 비율 <span class="src r">영수증</span></h3>
+    <p class="sub">리뷰 쓰신 분 중 <b>두 번 이상 오신 분</b>의 비율입니다.</p>
+    <div class="bars" id="revBars"></div>
+    <div class="flag"><b>숫자를 조금 깎아서 봐주셔야 합니다.</b>
+      매장을 연 지 5개월이라 단골이 쌓일 시간이 부족했고, 8월에 새 손님이 몰리면
+      재방문 <b>비율</b>은 저절로 내려갑니다. 그래도 9월 3%는 낮은 편입니다.</div>
+  </div>
+  <div class="sec">
+    <h3>'친절해요' 언급이 줄고 있습니다 <span class="src r">영수증</span></h3>
+    <p class="sub">역삼점은 한자리에서 3년을 재서 흐름이 보입니다. 1~9월 기준.</p>
+    <div class="tw"><table id="kindTbl"></table></div>
+    <p class="memo"><b>잠실점만의 문제가 아닙니다.</b> 역삼점이 더 크게 떨어졌습니다.
+       매장 관리보다는 <b>두 점포에 공통으로 생긴 변화</b>를 봐야 할 것 같습니다.
+       키오스크·인원 구성 같은 건 대표님이 아실 테니 여쭙겠습니다.</p>
+  </div>
+</div>
+
+<!-- 키워드 -->
+<div class="panel" data-tab="words" hidden>
+  <div class="lead">
+    <div class="t">키워드</div>
+    <h2>손님은 '잠실 샌드위치'와 '잠봉뵈르'로 우리를 찾습니다</h2>
+    <p>블로그 제목은 검색에 걸리라고 쓰는 말이라, <b>제목이 곧 우리 가게가 걸려 있는 검색어</b>입니다.
+       간판·메뉴판·SNS에 이 말을 그대로 쓰시면 됩니다.</p>
+  </div>
+  <div class="sec">
+    <h3>블로그 제목에 들어간 말 <span class="src b">블로그</span></h3>
+    <div class="bars" id="titleBars"></div>
+  </div>
+  <div class="sec">
+    <h3>메뉴 언급 <span class="src b">블로그</span></h3>
+    <p class="sub">바게트·세트는 메뉴판을 통째로 옮겨 적은 글이 많아 부풀려집니다.
+       <b>제목에까지 40%가 들어가는 잠봉뵈르</b>가 진짜 간판입니다.</p>
+    <div class="bars" id="menuBars"></div>
+  </div>
+  <div class="sec">
+    <h3>어떤 상황에 오시나 <span class="src b">블로그</span></h3>
+    <div class="bars" id="ctxBars"></div>
+  </div>
+  <div class="sec">
+    <h3>맛 표현 · 매장과 위치 <span class="src b">블로그</span></h3>
+    <p class="sub"><b>주차 47%</b>는 눈여겨볼 값입니다. 절반 가까이가 무료주차 조건을 적어 놨습니다 —
+       그만큼 차를 갖고 오시고, 중요하게 여기신다는 뜻입니다.</p>
+    <div class="bars" id="placeBars"></div>
+  </div>
+</div>
+
+<!-- 역삼점과 비교 -->
+<div class="panel" data-tab="cmp" hidden>
+  <div class="lead">
+    <div class="t">역삼점과 비교</div>
+    <h2>제품은 잠실점이 앞서고, 재방문은 두 곳 다 낮습니다</h2>
+    <p>같은 간판이라 서로가 가장 정확한 비교 대상입니다. 같은 기간(2026년 4~9월)으로 맞췄습니다.</p>
+  </div>
+  <div class="tw"><table id="cmpTbl"></table></div>
+  <p class="memo">역삼점 최근 리뷰가 <b>33건</b>뿐이라 큰 흐름만 보시고 소수점은 넘겨 주십시오.</p>
+  <div class="sec">
+    <h3>커피는 잠실점에만 있는 반응 <span class="src r">영수증</span></h3>
+    <div class="bars" id="cofBars"></div>
+    <p class="memo">같은 간판인데 커피 얘기가 잠실점에서만 나옵니다.
+       원두나 기계가 다른지, 잠실점만의 것이라면 <b>그대로 내세울 수 있는 카드</b>입니다.</p>
+  </div>
+  <div class="sec">
+    <h3>역삼점 월별 · 작년 대비 <span class="src r">영수증</span></h3>
+    <p class="sub">2023년 4월부터 같은 자리라 작년과 비교가 깨끗합니다.</p>
+    <div class="dbars" id="cmpYoY"></div>
+    <div class="flag" id="cmpFlag"></div>
+  </div>
+</div>
+
+<!-- 액션플랜 -->
+<div class="panel" data-tab="plan" hidden>
+  <div class="lead ask">
+    <div class="t">액션플랜</div>
+    <h2>리뷰로 바로 할 수 있는 건 A뿐입니다. 나머지는 대표님 답이 있어야 정해집니다.</h2>
+    <p>리뷰에서 <b>숫자로 확인된 것만</b> 적었습니다.
+       재방문을 어떻게 올릴지는 <b>원인을 모르는 상태라 아직 안 정했습니다.</b></p>
+  </div>
+
+  <div class="sec">
+    <h3>A · 리뷰가 그대로 알려준 것 — 돈이 안 듭니다</h3>
+    <p class="sub">손님이 이미 쓰고 있는 말을 우리 쪽 문구에 맞추는 일입니다. 판단이 거의 안 들어갑니다.</p>
+    <div class="asks" id="planA"></div>
+  </div>
+
+  <div class="sec">
+    <h3>B · 가장 큰 구멍 — 그런데 원인이 리뷰에 없습니다</h3>
+    <div class="asks" id="planB"></div>
+    <div class="tw"><table id="whyTbl"></table></div>
+    <p class="memo"><b>그래서 여기서 멈췄습니다.</b> 쿠폰이든 적립이든 방법은 여럿인데,
+       <b>왜 안 오시는지를 모르면 아무거나 고르는 것</b>이라 효과도 확인할 수 없습니다.
+       아래 C가 채워지면 그때 대표님과 같이 정하는 게 맞다고 봅니다.</p>
+  </div>
+
+  <div class="sec">
+    <h3>C · 대표님께 여쭤야 정해지는 것</h3>
+    <p class="sub">리뷰로는 여기까지입니다. 아래가 채워지면 B를 어떻게 할지 판단할 수 있습니다.</p>
+    <div class="tw"><table id="planC"></table></div>
+  </div>
+
+  <div class="sec">
+    <h3>정리</h3>
+    <div class="tw"><table id="planSum"></table></div>
+  </div>
+</div>
+
+<!-- 스레드 초안 -->
+<div class="panel" data-tab="th" hidden>
+  <div class="lead ask">
+    <div class="t">스레드 초안</div>
+    <h2 id="thHead">이번 주 올릴 글 초안입니다</h2>
+    <p id="thLede"></p>
+  </div>
+  <div class="warnstrip" id="thGate"></div>
+  <div class="thwrap" id="thList"></div>
+  <div class="sec">
+    <h3>안 쓴 소재와 이유</h3>
+    <div class="tw"><table id="thSkip"></table></div>
+  </div>
+  <div class="sec">
+    <h3>올리는 법</h3>
+    <div class="tw"><table id="thHow"></table></div>
+  </div>
+</div>
+
+<footer>네이버 지도 공개 리뷰를 정리한 자료입니다 · 2026-09-13 기준 · 문의 함수정</footer>
+</div>
+
+<script>
+/*DATA-START*/
+const YY={"ytdJ": {"2021": 14, "2022": 43, "2023": 168, "2024": 13, "2025": 11, "2026": 226}, "ytdY": {"2023": 200, "2024": 50, "2025": 45, "2026": 42}, "monthJ": [{"m": "01", "y25": 0, "y26": 2}, {"m": "02", "y25": 2, "y26": 0}, {"m": "03", "y25": 0, "y26": 2}, {"m": "04", "y25": 0, "y26": 10}, {"m": "05", "y25": 1, "y26": 18}, {"m": "06", "y25": 0, "y26": 28}, {"m": "07", "y25": 1, "y26": 34}, {"m": "08", "y25": 2, "y26": 96}, {"m": "09", "y25": 5, "y26": 36}], "monthY": [{"m": "01", "y25": 7, "y26": 4}, {"m": "02", "y25": 5, "y26": 2}, {"m": "03", "y25": 4, "y26": 3}, {"m": "04", "y25": 5, "y26": 0}, {"m": "05", "y25": 5, "y26": 5}, {"m": "06", "y25": 2, "y26": 0}, {"m": "07", "y25": 4, "y26": 3}, {"m": "08", "y25": 9, "y26": 14}, {"m": "09", "y25": 4, "y26": 11}], "yeoksamSplit": [{"k": "1~7월", "y25": 32, "y26": 17}, {"k": "8~9월", "y25": 13, "y26": 25}], "jamsilSplit": [{"k": "1~7월", "y25": 4, "y26": 94}, {"k": "8~9월", "y25": 7, "y26": 132}], "blogY": [{"m": "01", "y24": 0, "y25": 5, "y26": 0}, {"m": "02", "y24": 0, "y25": 8, "y26": 0}, {"m": "03", "y24": 3, "y25": 6, "y26": 0}, {"m": "04", "y24": 5, "y25": 5, "y26": 0}, {"m": "05", "y24": 2, "y25": 4, "y26": 0}, {"m": "06", "y24": 6, "y25": 3, "y26": 0}, {"m": "07", "y24": 6, "y25": 9, "y26": 0}, {"m": "08", "y24": 2, "y25": 7, "y26": 6}, {"m": "09", "y24": 3, "y25": 0, "y26": 3}], "blogYtd": {"2024": 27, "2025": 47, "2026": 9}, "yeoksamYear": {"2023": {"n": 200, "revisit": 18, "kind": 62, "alone": 50, "food": 81, "fresh": 73, "large": 21, "clean": 51, "cheap": 32, "interior": 12, "blen": 51, "photo": 61}, "2024": {"n": 50, "revisit": 8, "kind": 34, "alone": 30, "food": 95, "fresh": 81, "large": 32, "clean": 24, "cheap": 24, "interior": 4, "blen": 102, "photo": 82}, "2025": {"n": 45, "revisit": 17, "kind": 28, "alone": 40, "food": 100, "fresh": 75, "large": 35, "clean": 22, "cheap": 17, "interior": 11, "blen": 95, "photo": 95}, "2026": {"n": 42, "revisit": 7, "kind": 16, "alone": 40, "food": 100, "fresh": 64, "large": 4, "clean": 21, "cheap": 33, "interior": 9, "blen": 65, "photo": 73}}, "jamsilYear": {"2022": {"n": 43, "revisit": 25, "kind": 40, "alone": 2, "food": 87, "fresh": 57, "large": 10, "clean": 27, "cheap": 27, "interior": 2, "blen": 29, "photo": 16}, "2023": {"n": 168, "revisit": 19, "kind": 64, "alone": 13, "food": 86, "fresh": 79, "large": 10, "clean": 34, "cheap": 26, "interior": 5, "blen": 50, "photo": 52}, "2024": {"n": 13, "revisit": 46, "kind": 15, "alone": 15, "food": 92, "fresh": 76, "large": 15, "clean": 0, "cheap": 46, "interior": 0, "blen": 29, "photo": 38}, "2025": {"n": 11, "revisit": 45, "kind": 27, "alone": 9, "food": 90, "fresh": 100, "large": 45, "clean": 9, "cheap": 63, "interior": 9, "blen": 27, "photo": 63}, "2026": {"n": 226, "revisit": 7, "kind": 27, "alone": 38, "food": 96, "fresh": 91, "large": 29, "clean": 21, "cheap": 24, "interior": 14, "blen": 78, "photo": 78}}, "calc": {"ytdJ_yoy": 1955, "ytdY_yoy": -7, "blogY_yoy": -81}};
+const D={"jamsilMonthly": [{"m": "2021-05", "c": 3}, {"m": "2021-06", "c": 7}, {"m": "2021-07", "c": 2}, {"m": "2021-08", "c": 1}, {"m": "2021-09", "c": 1}, {"m": "2021-10", "c": 2}, {"m": "2021-11", "c": 1}, {"m": "2021-12", "c": 6}, {"m": "2022-01", "c": 5}, {"m": "2022-02", "c": 6}, {"m": "2022-03", "c": 2}, {"m": "2022-04", "c": 7}, {"m": "2022-05", "c": 3}, {"m": "2022-06", "c": 7}, {"m": "2022-07", "c": 8}, {"m": "2022-08", "c": 2}, {"m": "2022-09", "c": 3}, {"m": "2022-10", "c": 20}, {"m": "2022-11", "c": 13}, {"m": "2022-12", "c": 11}, {"m": "2023-01", "c": 18}, {"m": "2023-02", "c": 35}, {"m": "2023-03", "c": 42}, {"m": "2023-04", "c": 17}, {"m": "2023-05", "c": 27}, {"m": "2023-06", "c": 17}, {"m": "2023-07", "c": 9}, {"m": "2023-08", "c": 3}, {"m": "2023-11", "c": 3}, {"m": "2023-12", "c": 2}, {"m": "2024-02", "c": 2}, {"m": "2024-03", "c": 1}, {"m": "2024-04", "c": 1}, {"m": "2024-05", "c": 4}, {"m": "2024-06", "c": 1}, {"m": "2024-07", "c": 2}, {"m": "2024-09", "c": 2}, {"m": "2024-11", "c": 2}, {"m": "2024-12", "c": 1}, {"m": "2025-02", "c": 2}, {"m": "2025-05", "c": 1}, {"m": "2025-07", "c": 1}, {"m": "2025-08", "c": 2}, {"m": "2025-09", "c": 5}, {"m": "2025-10", "c": 2}, {"m": "2025-12", "c": 1}, {"m": "2026-01", "c": 2}, {"m": "2026-03", "c": 2}, {"m": "2026-04", "c": 10}, {"m": "2026-05", "c": 18}, {"m": "2026-06", "c": 28}, {"m": "2026-07", "c": 34}, {"m": "2026-08", "c": 96}, {"m": "2026-09", "c": 36}], "yeoksamMonthly": [{"m": "2023-04", "c": 18}, {"m": "2023-05", "c": 74}, {"m": "2023-06", "c": 47}, {"m": "2023-07", "c": 15}, {"m": "2023-08", "c": 26}, {"m": "2023-09", "c": 20}, {"m": "2023-10", "c": 12}, {"m": "2023-11", "c": 2}, {"m": "2023-12", "c": 9}, {"m": "2024-01", "c": 8}, {"m": "2024-02", "c": 7}, {"m": "2024-03", "c": 7}, {"m": "2024-04", "c": 10}, {"m": "2024-06", "c": 5}, {"m": "2024-07", "c": 3}, {"m": "2024-08", "c": 3}, {"m": "2024-09", "c": 7}, {"m": "2024-10", "c": 2}, {"m": "2024-11", "c": 6}, {"m": "2024-12", "c": 2}, {"m": "2025-01", "c": 7}, {"m": "2025-02", "c": 5}, {"m": "2025-03", "c": 4}, {"m": "2025-04", "c": 5}, {"m": "2025-05", "c": 5}, {"m": "2025-06", "c": 2}, {"m": "2025-07", "c": 4}, {"m": "2025-08", "c": 9}, {"m": "2025-09", "c": 4}, {"m": "2025-10", "c": 1}, {"m": "2025-11", "c": 4}, {"m": "2025-12", "c": 5}, {"m": "2026-01", "c": 4}, {"m": "2026-02", "c": 2}, {"m": "2026-03", "c": 3}, {"m": "2026-05", "c": 5}, {"m": "2026-07", "c": 3}, {"m": "2026-08", "c": 14}, {"m": "2026-09", "c": 11}], "seg": {"jamsil_all": {"n": 222, "revisit": 7, "kind": 28, "alone": 39, "food": 95, "fresh": 91, "large": 29, "clean": 22, "cheap": 24, "interior": 14, "blen": 79, "photo": 78}, "jamsil_5m": {"n": 186, "revisit": 8, "kind": 29, "alone": 39, "food": 96, "fresh": 91, "large": 30, "clean": 22, "cheap": 24, "interior": 12, "blen": 75, "photo": 77}, "jamsil_peak": {"n": 200, "revisit": 22, "kind": 63, "alone": 15, "food": 85, "fresh": 79, "large": 11, "clean": 31, "cheap": 27, "interior": 5, "blen": 51, "photo": 52}, "jamsil_slump": {"n": 51, "revisit": 37, "kind": 27, "alone": 15, "food": 84, "fresh": 72, "large": 23, "clean": 9, "cheap": 33, "interior": 5, "blen": 33, "photo": 52}, "jamsil_apgu": {"n": 66, "revisit": 28, "kind": 41, "alone": 1, "food": 84, "fresh": 64, "large": 9, "clean": 27, "cheap": 29, "interior": 3, "blen": 35, "photo": 22}, "yeoksam_all": {"n": 380, "revisit": 18, "kind": 46, "alone": 43, "food": 88, "fresh": 74, "large": 24, "clean": 38, "cheap": 28, "interior": 10, "blen": 66, "photo": 71}, "yeoksam_same": {"n": 33, "revisit": 6, "kind": 15, "alone": 42, "food": 100, "fresh": 63, "large": 6, "clean": 24, "cheap": 36, "interior": 9, "blen": 68, "photo": 78}, "yeoksam_5m": {"n": 180, "revisit": 14, "kind": 63, "alone": 50, "food": 81, "fresh": 71, "large": 17, "clean": 53, "cheap": 31, "interior": 13, "blen": 50, "photo": 59}, "jamsil_recent": {"n": 132, "revisit": 6, "kind": 26, "alone": 42, "food": 96, "fresh": 90, "large": 34, "clean": 21, "cheap": 30, "interior": 14, "blen": 88, "photo": 81}, "yeoksam_recent": {"n": 25, "revisit": 8, "kind": 12, "alone": 48, "food": 100, "fresh": 60, "large": 8, "clean": 24, "cheap": 32, "interior": 8, "blen": 63, "photo": 92}}, "jamsilMonthlyRevisit": [{"m": "2026-04", "n": 10, "revisit": 20, "kind": 50, "alone": 10}, {"m": "2026-05", "n": 18, "revisit": 11, "kind": 38, "alone": 55}, {"m": "2026-06", "n": 28, "revisit": 7, "kind": 17, "alone": 32}, {"m": "2026-07", "n": 34, "revisit": 5, "kind": 32, "alone": 35}, {"m": "2026-08", "n": 96, "revisit": 7, "kind": 27, "alone": 42}, {"m": "2026-09", "n": 36, "revisit": 2, "kind": 25, "alone": 41}], "bodyMentions": [{"k": "빵·바게트", "p": 40, "c": 91}, {"k": "잠봉뵈르", "p": 22, "c": 51}, {"k": "친절·사장님", "p": 21, "c": 47}, {"k": "깔끔·청결", "p": 15, "c": 35}, {"k": "커피·원두", "p": 15, "c": 34}, {"k": "재방문 의사", "p": 14, "c": 33}, {"k": "혼자·혼밥", "p": 8, "c": 19}, {"k": "세트", "p": 7, "c": 16}, {"k": "반미", "p": 7, "c": 16}, {"k": "양 많다", "p": 5, "c": 12}], "coffee": {"jamsil": 15, "yeoksam_all": 6, "yeoksam_same": 0}, "origin": {"영수증": 460, "포장주문": 55, "결제내역": 24}, "ratings": {"5": 210, "4.5": 20, "4": 7, "3.5": 1, "None": 301}, "mom": [{"m": "2026-02", "partial": false, "days": null, "jamsil": {"n": 0, "revisit": null, "kind": null, "alone": null, "food": null, "fresh": null, "coffee": null}, "yeoksam": {"n": 2, "revisit": 0, "kind": 0, "alone": 50, "food": 100, "fresh": 50, "coffee": 0}}, {"m": "2026-03", "partial": false, "days": null, "jamsil": {"n": 2, "revisit": 0, "kind": 0, "alone": 0, "food": 100, "fresh": 100, "coffee": 0}, "yeoksam": {"n": 3, "revisit": 0, "kind": 33, "alone": 33, "food": 100, "fresh": 33, "coffee": 0}}, {"m": "2026-04", "partial": false, "days": null, "jamsil": {"n": 10, "revisit": 20, "kind": 50, "alone": 10, "food": 100, "fresh": 90, "coffee": 60}, "yeoksam": {"n": 0, "revisit": null, "kind": null, "alone": null, "food": null, "fresh": null, "coffee": null}}, {"m": "2026-05", "partial": false, "days": null, "jamsil": {"n": 18, "revisit": 11, "kind": 38, "alone": 55, "food": 94, "fresh": 94, "coffee": 5}, "yeoksam": {"n": 5, "revisit": 0, "kind": 40, "alone": 20, "food": 100, "fresh": 80, "coffee": 0}}, {"m": "2026-06", "partial": false, "days": null, "jamsil": {"n": 28, "revisit": 7, "kind": 17, "alone": 32, "food": 92, "fresh": 89, "coffee": 3}, "yeoksam": {"n": 0, "revisit": null, "kind": null, "alone": null, "food": null, "fresh": null, "coffee": null}}, {"m": "2026-07", "partial": false, "days": null, "jamsil": {"n": 34, "revisit": 5, "kind": 32, "alone": 35, "food": 97, "fresh": 97, "coffee": 14}, "yeoksam": {"n": 3, "revisit": 0, "kind": 0, "alone": 33, "food": 100, "fresh": 66, "coffee": 0}}, {"m": "2026-08", "partial": false, "days": null, "jamsil": {"n": 96, "revisit": 7, "kind": 27, "alone": 42, "food": 97, "fresh": 90, "coffee": 15}, "yeoksam": {"n": 14, "revisit": 7, "kind": 7, "alone": 50, "food": 100, "fresh": 78, "coffee": 0}}, {"m": "2026-09", "partial": true, "days": 13, "jamsil": {"n": 36, "revisit": 2, "kind": 25, "alone": 41, "food": 91, "fresh": 88, "coffee": 16}, "yeoksam": {"n": 11, "revisit": 9, "kind": 18, "alone": 45, "food": 100, "fresh": 36, "coffee": 0}}]};
+const BL={"n": 91, "nY": 90, "weekly": [{"w": "2026-06-29", "c": 1}, {"w": "2026-07-27", "c": 3}, {"w": "2026-08-03", "c": 10}, {"w": "2026-08-10", "c": 9}, {"w": "2026-08-17", "c": 16}, {"w": "2026-08-24", "c": 15}, {"w": "2026-08-31", "c": 18}, {"w": "2026-09-07", "c": 19}], "yeoksamMonthly": [{"m": "2023-09", "c": 1}, {"m": "2024-03", "c": 3}, {"m": "2024-04", "c": 5}, {"m": "2024-05", "c": 2}, {"m": "2024-06", "c": 6}, {"m": "2024-07", "c": 6}, {"m": "2024-08", "c": 2}, {"m": "2024-09", "c": 3}, {"m": "2024-10", "c": 1}, {"m": "2024-11", "c": 1}, {"m": "2024-12", "c": 3}, {"m": "2025-01", "c": 5}, {"m": "2025-02", "c": 8}, {"m": "2025-03", "c": 6}, {"m": "2025-04", "c": 5}, {"m": "2025-05", "c": 4}, {"m": "2025-06", "c": 3}, {"m": "2025-07", "c": 9}, {"m": "2025-08", "c": 7}, {"m": "2025-11", "c": 1}, {"m": "2026-08", "c": 6}, {"m": "2026-09", "c": 3}], "titleKw": [{"k": "'잠실 샌드위치'", "p": 60, "c": 55}, {"k": "'맛집'", "p": 63, "c": 58}, {"k": "'잠봉뵈르'", "p": 40, "c": 37}, {"k": "'브런치'", "p": 17, "c": 16}, {"k": "'혼밥'", "p": 15, "c": 14}, {"k": "'잠실 바게트'", "p": 15, "c": 14}], "menu": [{"k": "잠봉뵈르", "p": 84, "c": 77}, {"k": "바게트", "p": 75, "c": 69}, {"k": "세트", "p": 72, "c": 66}, {"k": "반미", "p": 52, "c": 48}, {"k": "그릴드치킨", "p": 35, "c": 32}, {"k": "에그", "p": 34, "c": 31}, {"k": "케이준 커리", "p": 27, "c": 25}], "ctx": [{"k": "혼밥·혼자", "p": 83, "c": 76}, {"k": "점심", "p": 63, "c": 58}, {"k": "포장", "p": 42, "c": 39}, {"k": "다이어트·가볍게", "p": 37, "c": 34}, {"k": "아침·브런치", "p": 36, "c": 33}, {"k": "배달", "p": 30, "c": 28}, {"k": "회사·직장인", "p": 32, "c": 30}], "place": [{"k": "잠실역", "p": 61, "c": 56}, {"k": "깔끔·청결", "p": 54, "c": 50}, {"k": "주차 정보", "p": 47, "c": 43}, {"k": "더샵 스타파크", "p": 40, "c": 37}, {"k": "웨이팅", "p": 20, "c": 19}, {"k": "9번 출구", "p": 17, "c": 16}], "taste": [{"k": "속재료 듬뿍", "p": 56, "c": 51}, {"k": "겉바속촉·바삭", "p": 53, "c": 49}, {"k": "안 질기다", "p": 30, "c": 28}, {"k": "새콤·상큼", "p": 17, "c": 16}], "trust": {"sponsor": 2, "event": 30}, "range": ["2026-07-05", "2026-09-13"]};
+const SN=[{"week": "2026-09-W2", "tuesday": "2026-09-08", "jamsil": {"total": 539, "since_open": 222, "revisit": 7, "kind": 28, "alone": 39, "food": 95, "fresh": 91, "coffee": 15, "blog": 91}, "yeoksam": {"total": 380, "revisit": 6, "kind": 15, "alone": 42, "food": 100, "fresh": 63, "blog": 90}, "new": {"jamsil": 0, "yeoksam": 0}}];
+const NEWR={
+ "jamsil": [],
+ "yeoksam": []
+};
+const TH={"week": "2026-09-W2", "label": "9월 2째주", "account": "@town_sandwich", "mix": "이번 주는 단체주문 소재가 없어 리뷰로 2편", "posts": [{"n": 1, "kind": "리뷰", "title": "커피", "tag": "샌드위치", "body": "샌드위치집 하는데 손님이 커피 얘기를 먼저 꺼낼 때가 있다.\n\n\"커피가 진짜 진또배기\"\n\"싸구려 커피 맛 아님\"\n\n솔직히 커피는 우리가 거의 안 알렸어.\n메뉴판에서도 맨 아래 있고.\n\n먼저 알아봐 주는 사람이 생기니까\n이제 위로 올려야 하나 싶은데\n샌드위치집이 커피 내세우면 좀 이상한가?", "why": "리뷰 15%가 커피를 먼저 꺼내는데 메뉴판에선 사이드입니다. 칭찬을 그대로 옮기면 자랑이 되니까 \"안 알렸다\"고 먼저 깐 뒤 \"이상한가?\"로 물어 고민 글로 꺾었습니다.", "warn": "메뉴판에서 커피가 실제로 맨 아래가 맞는지 확인 부탁드립니다. 아니면 그 줄을 뺍니다."}, {"n": 2, "kind": "리뷰", "title": "앉을 자리", "tag": "자영업자이야기", "body": "예전 가게엔 앉을 자리가 거의 없었어.\n\n2021년에 손님이 리뷰에 이렇게 써놨더라.\n\"앉아서 먹을 수 있는 공간이 없어서 아쉬울 뿐입니다\"\n\n그거 보고 4년을 마음에 담아뒀다가\n이번에 옮기면서 1인석부터 넣었어.\n\n요즘은 혼자 와서 샌드위치 하나 스프 하나 놓고\n창밖 보다 가는 손님이 제일 많아.\n\n다른 사장님들은 자리 배치 어떻게 정했어?", "why": "2021년 리뷰 원문이 실제로 남아 있습니다. '4년 전 아쉬움 → 지금 해결'이라는 시간 구조가 이 판에서 잘 먹히는 형태입니다. '혼밥하기 좋아요'가 옛 매장 2% → 잠실점 40%로 오른 게 근거입니다.", "warn": "\"그 리뷰를 보고 1인석을 넣었다\"는 대표님 의도를 저희가 추정한 문장입니다. 사실이 아니면 이 줄을 빼고 \"이번엔 1인석부터 넣었어\"로만 갑니다."}], "skipped": [{"k": "\"겉바속쫄 극락\"", "x": "표현은 좋은데 인용만으로는 자랑이 됩니다. 꺾을 고민이 안 붙었습니다"}, {"k": "재방문율·친절 지표", "x": "내부 숫자입니다. 손님에게 할 말이 아닙니다"}, {"k": "8월 리뷰 96건 역대 최고", "x": "자랑인 데다, 브랜드 집행 결과일 수 있어 우리 공으로 말할 수 없습니다"}, {"k": "가격", "x": "현행가 확인 전이라 쓰지 않았습니다"}], "howto": ["1편은 화요일, 2편은 금요일쯤. 몰아서 올리지 않습니다", "올린 뒤 답글에는 전부 답합니다 — 스레드는 답글이 곧 노출입니다", "태그는 각 1개만 답니다"], "_cur": "2026-09-W2", "_stale": false};
+/*DATA-END*/
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t); if(c)n.className=c; if(h!=null)n.innerHTML=h; return n;};
+const S=D.seg;
+const pct=v=>v==null?"—":(v>0?"+":"")+v+"%";
+const cls=v=>v==null?"flat":(v>0?"up":v<0?"dn":"flat");
+const dd=(a,b)=>a?Math.round((b-a)*100/a):null;
+
+const TABS=["home","week","month","good","gap","words","cmp","plan","th"];
+function showTab(id,push){
+  if(!TABS.includes(id)) id="home";
+  document.querySelectorAll(".panel").forEach(p=>{p.hidden=p.dataset.tab!==id;});
+  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.go===id)));
+  if(push && location.hash!=="#"+id) history.replaceState(null,"","#"+id);
+  const nav=$("#tabs"), a=document.querySelector('.tab[aria-selected="true"]');
+  if(a&&nav) nav.scrollTo({left:Math.max(0,a.offsetLeft-24),behavior:"smooth"});
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-go]"); if(!b) return;
+  showTab(b.dataset.go,true); window.scrollTo({top:0,behavior:"smooth"});
+});
+$("#tabs").addEventListener("keydown",e=>{
+  if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft") return;
+  const cur=TABS.indexOf(document.querySelector('.tab[aria-selected="true"]').dataset.go);
+  const nxt=(cur+(e.key==="ArrowRight"?1:TABS.length-1))%TABS.length;
+  showTab(TABS[nxt],true); document.querySelector(`.tab[data-go="${TABS[nxt]}"]`).focus(); e.preventDefault();
+});
+{const h=(location.hash||"#home").slice(1); showTab(h,false);}
+
+function bars(node,rows,opt){
+  opt=opt||{}; const max=opt.max||Math.max(...rows.filter(r=>!r.split).map(r=>r.v||0),1);
+  node.innerHTML="";
+  rows.forEach(r=>{
+    if(r.split){ node.appendChild(el("div","split",r.split)); return; }
+    const row=el("div","bar");
+    row.appendChild(el("div","l"+(r.hi?" hi":""),r.k));
+    const t=el("div","tr"), f=el("div","fi"+(r.hi?" hi":"")+(r.wn?" wn":""));
+    f.style.width=Math.max((r.v/max)*100,r.v>0?1.5:0)+"%"; t.appendChild(f); row.appendChild(t);
+    row.appendChild(el("div","v",(r.lab!=null?r.lab:r.v)+(r.sub?` <small>${r.sub}</small>`:"")));
+    node.appendChild(row);
+  });
+}
+function table(node,head,rows){
+  node.innerHTML="";
+  const th=el("thead"), tr=el("tr");
+  head.forEach(h=>tr.appendChild(el("th",h.r?"r":"",h.t||h)));
+  th.appendChild(tr); node.appendChild(th);
+  const tb=el("tbody");
+  rows.forEach(r=>{
+    const t=el("tr",r._c||"");
+    r.c.forEach((c,i)=>{
+      const td=el("td",(head[i]&&head[i].r?"r ":"")+(head[i]&&head[i].note?"note":""));
+      td.innerHTML=head[i]&&head[i].r?`<span>${c}</span>`:c;
+      t.appendChild(td);
+    });
+    tb.appendChild(t);
+  });
+  node.appendChild(tb);
+}
+function dbars(node,rows,hiFn){
+  const max=Math.max(...rows.map(r=>Math.max(r.y25,r.y26)),1);
+  node.innerHTML="";
+  rows.forEach(r=>{
+    const d=r.y25?Math.round((r.y26-r.y25)*100/r.y25):(r.y26?null:0);
+    const row=el("div","db");
+    row.appendChild(el("div","l",r.m+"월"));
+    const pr=el("div","pr");
+    [["p",r.y25],["c",r.y26]].forEach(([k,v])=>{
+      const t=el("div","dt"), f=el("div","df "+k+(k==="c"&&hiFn&&hiFn(r)?" hi":""));
+      f.style.width=Math.max((v/max)*100,v>0?2:0)+"%"; t.appendChild(f); pr.appendChild(t);
+    });
+    row.appendChild(pr);
+    row.appendChild(el("div","vv",`<span class="a">${r.y25}</span> → <span class="b">${r.y26}</span>`+
+      `<span class="d ${cls(d)}">${d==null?"신규":pct(d)}</span>`));
+    node.appendChild(row);
+  });
+  node.appendChild(el("div","lgd",'<span><i class="p"></i>2025년</span><span><i class="c"></i>2026년</span>'));
+}
+
+/* 월별 기록 — MoM */
+{
+ const M=D.mom||[];
+ const lab=m=>m.slice(5)+"월";
+ const dlt=(c,p,inv)=>{
+   if(c==null||p==null) return `<span class="flat">—</span>`;
+   const d=c-p; if(!d) return `<span class="flat">0</span>`;
+   const good=inv?d<0:d>0;
+   return `<span class="${good?"up":"dn"}">${d>0?"+":""}${d}</span>`;
+ };
+ const done=M.filter(r=>!r.partial);
+ const last=done.length?done[done.length-1]:null;          // 마지막 완결 월
+ const prev=done.length>1?done[done.length-2]:null;
+ const cur=M.length&&M[M.length-1].partial?M[M.length-1]:null;
+
+ if(last){
+   $("#moHead").textContent=`${lab(last.m)} vs ${prev?lab(prev.m):"—"} · 전달 대비`;
+   $("#moLede").innerHTML=cur
+     ? `아래 숫자는 <b>${lab(last.m)}</b>(마지막으로 끝난 달) 기준입니다.
+        ${lab(cur.m)}은 아직 <b>${cur.days}일</b>밖에 안 지나 비교에서 뺐습니다.`
+     : `${lab(last.m)} 기준입니다.`;
+   const J=last.jamsil, P=prev?prev.jamsil:{};
+   $("#moKpi").innerHTML=[
+    {k:"잠실 리뷰 수",v:J.n+"건",s:prev?`${lab(prev.m)} ${P.n}건`:"",x:dlt(J.n,P.n)},
+    {k:"다시 오신 손님",v:(J.revisit??"—")+"%",s:prev?`${lab(prev.m)} ${P.revisit??"—"}%`:"",x:dlt(J.revisit,P.revisit),c:"warn"},
+    {k:"'친절해요'",v:(J.kind??"—")+"%",s:prev?`${lab(prev.m)} ${P.kind??"—"}%`:"",x:dlt(J.kind,P.kind)},
+    {k:"커피 언급",v:(J.coffee??"—")+"%",s:prev?`${lab(prev.m)} ${P.coffee??"—"}%`:"",x:dlt(J.coffee,P.coffee),c:"good"}
+   ].map(c=>`<div class="kpi ${c.c||""}"><div class="k">${c.k}</div>
+     <div class="v">${c.v} <span style="font-size:14px">${c.x}</span></div>
+     <div class="s">${c.s}</div></div>`).join("");
+ }
+ $("#moWarn").innerHTML=`<span><b>달마다 표본이 크게 다릅니다.</b>
+   4월은 리뷰가 10건뿐이라 비율 하나가 10%씩 움직입니다 — 그 달 커피 60%는
+   6건이 언급했다는 뜻이지 갑자기 좋아진 게 아닙니다.
+   <b>리뷰 수가 30건을 넘은 7월 이후부터 비율을 읽으십시오.</b>${cur?`
+   그리고 ${lab(cur.m)}은 아직 ${cur.days}일치라 다음 달 초에 다시 보셔야 합니다.`:""}</span>`;
+
+ // 월별 리뷰 수 — 잠실/역삼 두 줄
+ {
+   const node=$("#moBars"); node.innerHTML="";
+   const max=Math.max(...M.map(r=>Math.max(r.jamsil.n,r.yeoksam.n)),1);
+   M.forEach((r,i)=>{
+     const p=i?M[i-1]:null, d=p&&p.jamsil.n?Math.round((r.jamsil.n-p.jamsil.n)*100/p.jamsil.n):null;
+     const row=el("div","db");
+     row.appendChild(el("div","l",lab(r.m)+(r.partial?"*":"")));
+     const pr=el("div","pr");
+     [["p",r.yeoksam.n],["c",r.jamsil.n]].forEach(([k,v])=>{
+       const t=el("div","dt"), f=el("div","df "+k+(k==="c"&&r.partial?" hi":""));
+       f.style.width=Math.max((v/max)*100,v>0?2:0)+"%"; t.appendChild(f); pr.appendChild(t);
+     });
+     row.appendChild(pr);
+     row.appendChild(el("div","vv",
+       `<span class="a">역삼 ${r.yeoksam.n}</span> · <span class="b">잠실 ${r.jamsil.n}</span>`+
+       `<span class="d ${d==null?"flat":d>0?"up":d<0?"dn":"flat"}">${d==null?"—":(d>0?"+":"")+d+"%"}</span>`));
+     node.appendChild(row);
+   });
+   node.appendChild(el("div","lgd",
+     '<span><i class="p"></i>역삼점</span><span><i class="c"></i>잠실점</span><span>* 진행 중인 달</span>'));
+ }
+
+ const mkTbl=(id,key,keys)=>table($(id),
+   ["월",{t:"리뷰",r:1},...keys.map(k=>({t:k[0],r:1}))],
+   M.slice().reverse().map((r,i,arr)=>{
+     const p=arr[i+1], a=r[key], b=p?p[key]:null;
+     return {c:[lab(r.m)+(r.partial?" <span style=\"color:var(--ink-3);font-size:12px\">진행 중</span>":""),
+        `${a.n} ${p?dlt(a.n,b.n):""}`,
+        ...keys.map(k=>a[k[1]]==null?"—":`${a[k[1]]}% ${p?dlt(a[k[1]],b[k[1]]):""}`)],
+       _c:r.partial?"wl":(i===1?"hl":"")};
+   }));
+ mkTbl("#moTblJ","jamsil",[["재방문","revisit"],["친절","kind"],["혼밥","alone"],["맛","food"],["신선","fresh"],["커피","coffee"]]);
+ mkTbl("#moTblY","yeoksam",[["재방문","revisit"],["친절","kind"],["혼밥","alone"],["맛","food"],["신선","fresh"]]);
+}
+
+/* 주차별 기록 */
+{
+ const last=SN.length?SN[SN.length-1]:null, prev=SN.length>1?SN[SN.length-2]:null;
+ const arrow=(c,p,inv)=>{
+   if(p==null||c==null) return "";
+   const d=c-p; if(!d) return ` <span class="flat">—</span>`;
+   const good=inv?d<0:d>0;
+   return ` <span class="${good?"up":"dn"}">${d>0?"▲":"▼"}${Math.abs(d)}</span>`;
+ };
+ if(last){
+   const wk=last.week.replace(/(\d{4})-(\d{2})-W(\d)/,"$2월 $3째주");
+   $("#wkHead").textContent=`${wk} 기록 (${last.tuesday} 화요일 기준)`;
+   $("#wkKpi").innerHTML=[
+    {k:"잠실 리뷰 (이전 후)",v:last.jamsil.since_open+"건",
+     s:prev?`지난주 ${prev.jamsil.since_open}건`:"첫 회차",
+     x:prev?arrow(last.jamsil.since_open,prev.jamsil.since_open):""},
+    {k:"다시 오신 손님",v:last.jamsil.revisit+"%",
+     s:prev?`지난주 ${prev.jamsil.revisit}%`:"첫 회차",
+     x:prev?arrow(last.jamsil.revisit,prev.jamsil.revisit):"",c:"warn"},
+    {k:"'친절해요'",v:last.jamsil.kind+"%",
+     s:prev?`지난주 ${prev.jamsil.kind}%`:"첫 회차",
+     x:prev?arrow(last.jamsil.kind,prev.jamsil.kind):""},
+    {k:"커피 언급",v:last.jamsil.coffee+"%",
+     s:prev?`지난주 ${prev.jamsil.coffee}%`:"첫 회차",
+     x:prev?arrow(last.jamsil.coffee,prev.jamsil.coffee):"",c:"good"}
+   ].map(c=>`<div class="kpi ${c.c||""}"><div class="k">${c.k}</div>
+     <div class="v">${c.v}${c.x}</div><div class="s">${c.s}</div></div>`).join("");
+
+   const nj=(NEWR.jamsil||[]), ny=(NEWR.yeoksam||[]);
+   $("#wkNewSub").innerHTML = prev
+     ? `지난주 기록 이후 올라온 것만 추렸습니다. 잠실 <b>${nj.length}건</b> · 역삼 <b>${ny.length}건</b>.`
+     : `<b>첫 회차라 비교 대상이 없습니다.</b> 다음 주부터 새로 올라온 리뷰만 여기 뜹니다.`;
+   $("#wkNew").innerHTML = nj.length
+     ? nj.slice(0,12).map(r=>`<div class="q">${r.b||"(사진만 올린 리뷰)"}
+         <span class="m">${r.d}${r.r?" · 별점 "+r.r:""}</span></div>`).join("")
+     : `<div class="q" style="color:var(--ink-3)">이번 주 새로 올라온 리뷰가 없습니다.</div>`;
+ }
+ table($("#wkTbl"),
+  ["주차",{t:"잠실 리뷰",r:1},{t:"이번 주 새 리뷰",r:1},{t:"재방문",r:1},{t:"친절",r:1},{t:"커피",r:1},{t:"역삼 리뷰",r:1}],
+  SN.length? SN.slice().reverse().map((w,i)=>({
+    c:[w.week.replace(/(\d{4})-(\d{2})-W(\d)/,"$2월 $3째주"),
+       w.jamsil.since_open, w.new.jamsil, w.jamsil.revisit+"%",
+       w.jamsil.kind+"%", w.jamsil.coffee+"%", w.yeoksam.total],
+    _c:i===0?"hl":""}))
+   : [{c:["기록 없음","—","—","—","—","—","—"]}]);
+}
+
+/* 요약 */
+{
+ const mr=D.jamsilMonthlyRevisit;
+ $("#kpi").innerHTML=[
+  {k:"잠실점 리뷰",v:S.jamsil_all.n+"건",s:"이전 오픈 후 5개월",c:""},
+  {k:"음식이 맛있어요",v:S.jamsil_all.food+"%",s:"옛 매장 때 "+S.jamsil_peak.food+"%",c:"good"},
+  {k:"재료가 신선해요",v:S.jamsil_all.fresh+"%",s:"역삼점 "+S.yeoksam_same.fresh+"%",c:"good"},
+  {k:"다시 오신 손님",v:S.jamsil_all.revisit+"%",s:"9월은 "+mr[mr.length-1].revisit+"%",c:"warn"}
+ ].map(c=>`<div class="kpi ${c.c}"><div class="k">${c.k}</div><div class="v">${c.v}</div><div class="s">${c.s}</div></div>`).join("");
+
+ table($("#yoyTop"),
+  ["1~9월",{t:"2025년",r:1},{t:"2026년",r:1},{t:"작년 대비",r:1},{t:"",note:1}],
+  [{c:["잠실 (네이버 계정 기준)",YY.ytdJ["2025"]+"건",YY.ytdJ["2026"]+"건",
+      `<span class="${cls(YY.calc.ytdJ_yoy)}">${pct(YY.calc.ytdJ_yoy)}</span>`,
+      "2025년은 잠실새내, 2026년은 잠실점입니다"],_c:"hl"},
+   {c:["역삼점",YY.ytdY["2025"]+"건",YY.ytdY["2026"]+"건",
+      `<span class="${cls(YY.calc.ytdY_yoy)}">${pct(YY.calc.ytdY_yoy)}</span>`,
+      "같은 자리라 비교가 깨끗합니다"]}]);
+
+ const sp=YY.yeoksamSplit;
+ $("#yoyFlag").innerHTML=`<b>잠실점 +1,927%는 성장률로 읽으시면 안 됩니다.</b>
+   네이버 계정이 이어져 있어 작년 숫자는 <b>잠실새내 시절 침체기</b>의 것입니다.
+   같은 자리인 역삼점을 보면 1~7월은 <b>${pct(dd(sp[0].y25,sp[0].y26))}</b>인데
+   8~9월만 <b>${pct(dd(sp[1].y25,sp[1].y26))}</b>로 솟았습니다.`;
+
+ table($("#histTbl"),
+  ["시기",{t:"리뷰",r:1},{t:"다시 온 손님",r:1},{t:"친절해요",r:1},{t:"",note:1}],
+  [{c:["압구정샌드위치 (잠실새내) 2021~2022",S.jamsil_apgu.n,S.jamsil_apgu.revisit+"%",S.jamsil_apgu.kind+"%","가게 이름이 달랐던 때"]},
+   {c:["타운샌드위치로 바꾼 뒤 2022.10~2023.6",S.jamsil_peak.n,S.jamsil_peak.revisit+"%",S.jamsil_peak.kind+"%","월 최대 42건 — 1차 전성기"]},
+   {c:["조용했던 시기 2023.7~2026.3",S.jamsil_slump.n,S.jamsil_slump.revisit+"%",S.jamsil_slump.kind+"%","28개월간 월 1~5건"]},
+   {c:["<b>잠실점 2026.4~</b>",S.jamsil_all.n,S.jamsil_all.revisit+"%",S.jamsil_all.kind+"%","8월 96건 — 역대 최고"],_c:"hl"}]);
+}
+
+/* 잘되고 있는 것 */
+{
+ $("#goodCards").innerHTML=[
+  {v:S.jamsil_all.food+"%",t:"음식이 맛있어요",
+   x:`잠실점 손님 100명 중 ${S.jamsil_all.food}명이 골랐습니다. 옛 매장 때는 ${S.jamsil_peak.food}%였습니다.`},
+  {v:S.jamsil_all.fresh+"%",t:"재료가 신선해요",
+   x:`역삼점은 같은 기간 ${S.yeoksam_same.fresh}%입니다. <b>두 매장 중 잠실점이 확실히 앞섭니다.</b>`},
+  {v:D.bodyMentions[0].p+"%",t:"빵 이야기를 먼저 꺼냅니다",
+   x:`리뷰 본문 ${D.bodyMentions[0].c}건이 빵·바게트를 언급했습니다. "겉은 바삭, 속은 부드럽다"가 반복됩니다.`},
+  {v:S.jamsil_all.alone+"%",t:"혼밥하기 좋아요",
+   x:`옛 매장에서는 ${S.jamsil_apgu.alone}%였습니다. <b>좌석을 바꾸신 게 그대로 숫자로 나왔습니다.</b>`}
+ ].map(c=>`<article class="card good"><div class="big">${c.v}</div><h4>${c.t}</h4><p>${c.x}</p></article>`).join("");
+
+ const K=[["음식이 맛있어요","food"],["재료가 신선해요","fresh"],["혼밥하기 좋아요","alone"],
+          ["양이 많아요","large"],["친절해요","kind"],["매장이 청결해요","clean"],
+          ["가성비가 좋아요","cheap"],["인테리어가 멋져요","interior"]];
+ bars($("#kwBars"),K.map(([lab,k])=>({k:lab,v:S.jamsil_all[k],lab:S.jamsil_all[k]+"%",
+   sub:"옛 매장 "+S.jamsil_peak[k]+"%", hi:S.jamsil_all[k]>=S.jamsil_peak[k]})),{max:100});
+}
+
+/* 아쉬운 것 */
+{
+ const mr=D.jamsilMonthlyRevisit;
+ $("#gapCards").innerHTML=[
+  {v:S.jamsil_all.revisit+"%",t:"다시 오신 손님",
+   x:`옛 매장 전성기에는 ${S.jamsil_peak.revisit}%였습니다. 가장 최근인 9월은 <b>${mr[mr.length-1].revisit}%</b>입니다.`},
+  {v:S.jamsil_all.kind+"%",t:"'친절해요' 언급",
+   x:`옛 매장 때 ${S.jamsil_peak.kind}%. <b>역삼점도 같이 떨어져서</b> 잠실점만의 일은 아닙니다.`}
+ ].map(c=>`<article class="card warn"><div class="big">${c.v}</div><h4>${c.t}</h4><p>${c.x}</p></article>`).join("");
+
+ bars($("#revBars"),mr.map(r=>({k:r.m.replace("-","년 ")+"월",v:r.revisit,lab:r.revisit+"%",
+   sub:"리뷰 "+r.n+"건", wn:r.revisit<=5})),{max:25});
+
+ const ys=["2023","2024","2025","2026"];
+ table($("#kindTbl"),
+  ["역삼점 (1~9월)",...ys.map(y=>({t:y+"년",r:1})),{t:"",note:1}],
+  [{c:["'친절해요' 언급",...ys.map(y=>YY.yeoksamYear[y].kind+"%"),"<b>3년 연속 내려갑니다</b>"],_c:"wl"},
+   {c:["다시 온 손님",...ys.map(y=>YY.yeoksamYear[y].revisit+"%"),"2026년이 가장 낮습니다"]},
+   {c:["음식이 맛있어요",...ys.map(y=>YY.yeoksamYear[y].food+"%"),"제품은 계속 좋습니다"]},
+   {c:["리뷰 수",...ys.map(y=>YY.yeoksamYear[y].n+"건"),""]}]);
+}
+
+/* 키워드 */
+{
+ const B=(id,arr,hiK,max)=>bars($(id),arr.map(m=>({k:m.k,v:m.p,lab:m.p+"%",sub:m.c+"건",hi:m.k===hiK})),{max:max});
+ B("#titleBars",BL.titleKw,"'잠봉뵈르'");
+ B("#menuBars",BL.menu,"잠봉뵈르");
+ B("#ctxBars",BL.ctx,"혼밥·혼자");
+ bars($("#placeBars"),[
+  ...BL.taste.map(m=>({k:m.k,v:m.p,lab:m.p+"%",sub:m.c+"건"})),
+  {split:"매장과 위치"},
+  ...BL.place.map(m=>({k:m.k,v:m.p,lab:m.p+"%",sub:m.c+"건",hi:m.k==="주차 정보"}))
+ ]);
+}
+
+/* 역삼점과 비교 */
+{
+ const R=(lab,k,v,c)=>({c:[lab,S.jamsil_all[k]+"%",S.yeoksam_same[k]+"%",v],_c:c||""});
+ table($("#cmpTbl"),
+  ["2026년 4~9월",{t:"잠실점",r:1},{t:"역삼점",r:1},{t:"",note:1}],
+  [R("재료가 신선해요","fresh","<b>잠실점이 앞섭니다</b>","hl"),
+   R("음식이 맛있어요","food","둘 다 높습니다"),
+   R("혼밥하기 좋아요","alone","비슷합니다"),
+   R("친절해요","kind","둘 다 낮습니다","wl"),
+   {c:["<b>다시 온 손님</b>",S.jamsil_all.revisit+"%",S.yeoksam_same.revisit+"%",
+       "<b>거의 같습니다 — 한 매장 문제가 아닙니다</b>"],_c:"wl"},
+   {c:["리뷰 수",S.jamsil_all.n+"건",S.yeoksam_same.n+"건","역삼점 표본이 작습니다"]}]);
+
+ bars($("#cofBars"),[
+  {k:"잠실점",v:D.coffee.jamsil,lab:D.coffee.jamsil+"%",sub:"리뷰 "+S.jamsil_all.n+"건",hi:true},
+  {k:"역삼점 전체",v:D.coffee.yeoksam_all,lab:D.coffee.yeoksam_all+"%",sub:"리뷰 "+S.yeoksam_all.n+"건"},
+  {k:"역삼점 같은 기간",v:D.coffee.yeoksam_same,lab:D.coffee.yeoksam_same+"%",sub:"리뷰 "+S.yeoksam_same.n+"건"}
+ ],{max:20});
+
+ dbars($("#cmpYoY"),YY.monthY,r=>+r.m>=8);
+ const sp=YY.yeoksamSplit;
+ $("#cmpFlag").innerHTML=`<b>역삼점은 올해 내내 작년보다 줄다가 8~9월에만 솟았습니다.</b>
+   1~7월 <b>${pct(dd(sp[0].y25,sp[0].y26))}</b> → 8~9월 <b>${pct(dd(sp[1].y25,sp[1].y26))}</b>.
+   잠실점도 같은 달에 리뷰가 96건으로 뛰었습니다. 두 점포에 같은 달 무슨 일이 있었는지는
+   「액션플랜」 C 항목에 확인할 것으로 남겨 두었습니다.`;
+}
+
+/* 스레드 초안 */
+{
+ if(!TH){
+   $("#thHead").textContent="이번 주 초안이 아직 없습니다";
+   $("#thLede").textContent="화요일 리뷰 조회 때 같이 만들어집니다.";
+   $("#thGate").innerHTML="<span>준비되면 여기에 올라옵니다.</span>";
+ } else {
+   const stale=TH._stale;
+   $("#thHead").textContent = stale
+     ? `${TH.label} 초안 (이번 주 것이 아닙니다)`
+     : `${TH.label} · 스레드 ${TH.posts.length}편`;
+   $("#thLede").innerHTML = stale
+     ? `아래는 <b>${TH.label}</b>에 만든 글입니다. 이번 주(<b>${(TH._cur||"").replace(/(\d{4})-(\d{2})-W(\d)/,"$2월 $3째주")}</b>)
+        초안은 아직 안 만들어졌습니다.`
+     : `${TH.account} 계정으로 올릴 글입니다. <b>${TH.mix}.</b>
+        아래 글을 보시고 <b>고칠 곳만 말씀해 주시면</b> 됩니다.`;
+   const warns=TH.posts.filter(p=>p.warn);
+   $("#thGate").innerHTML = stale
+     ? `<span><b>이미 지난주에 보신 글일 수 있습니다.</b>
+        새 글이 아니니 그대로 올리지 마시고, 이번 주 초안을 만든 뒤 다시 확인해 주세요.</span>`
+     : (warns.length
+       ? `<span><b>올리기 전에 ${warns.length}가지만 확인 부탁드립니다.</b>
+          저희가 추정해서 쓴 문장이라 사실과 다르면 그대로 나갑니다. 각 글 아래 주황색 칸입니다.</span>`
+       : `<span>확인이 필요한 문장은 없습니다.</span>`);
+
+   $("#thList").innerHTML=TH.posts.map(p=>`
+     <article class="thcard">
+       <div class="thhead">
+         <span class="no">${p.n}편</span>
+         <span class="ttl">${p.title}</span>
+         <span class="kd ${p.kind==="단체주문"?"g":""}">${p.kind}</span>
+       </div>
+       <div class="thpost">
+         <div class="thav">타</div>
+         <div class="thbody">
+           <div class="who">${TH.account.replace("@","")}</div>
+           <div class="txt">${p.body.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</div>
+           ${p.tag?`<span class="tag">#${p.tag}</span>`:""}
+         </div>
+       </div>
+       <div class="thcount">${p.body.replace(/\n/g,"").length}자 · 스레드 제한 500자</div>
+       <div class="thmeta">
+         <div class="row"><b>왜 이렇게 썼나 —</b> ${p.why}</div>
+         ${p.warn?`<div class="warn"><b>⚠️ 확인 부탁드립니다 —</b> ${p.warn}</div>`:""}
+       </div>
+     </article>`).join("");
+
+   table($("#thSkip"),["소재",{t:"왜 안 썼나",note:1}],
+     TH.skipped.map(o=>({c:[o.k,o.x]})));
+   table($("#thHow"),["",{t:"올리는 법"}],
+     TH.howto.map((h,i)=>({c:[String(i+1),h]})));
+ }
+}
+
+/* 액션플랜 */
+{
+ const card=o=>`<article class="askc"><div class="qn">${o.n}</div><h4>${o.t}</h4>
+   <p><b>리뷰가 말하는 것 —</b> ${o.w}</p><p><b>그래서 —</b> ${o.h}</p></article>`;
+
+ const A=[
+  {n:"A-1",t:"주차 조건을 알리기",
+   w:`블로그 글 <b>${BL.place[2].p}%</b>(${BL.place[2].c}건)가 무료주차 조건을 직접 적어 놨습니다.
+      손님이 <b>일부러 찾아 적을 만큼</b> 신경 쓰는 정보라는 뜻입니다.`,
+   h:`네이버 플레이스 소개글·매장 사이트에 "더샵 스타파크 지하 · 평일 1시간 / 주말 2시간 무료"를
+      넣으면 됩니다. 이미 있는 조건이라 <b>비용은 0원</b>입니다.`},
+  {n:"A-2",t:"커피 반응이 잠실점에만 있다는 사실",
+   w:`잠실점 리뷰 <b>${D.coffee.jamsil}%</b>가 커피를 먼저 꺼냅니다. 역삼점은 같은 기간 <b>0%</b>입니다.
+      "숨겨진 커피 맛집"이라는 표현까지 나옵니다.`,
+   h:`같은 간판인데 잠실점에서만 나오는 반응이라 <b>알리지 않으면 그냥 묻힙니다.</b>
+      어떻게 쓸지(메뉴판 위치·세트 구성·사진)는 원가와 운영을 아시는 대표님이 정하실 부분입니다.`},
+  {n:"A-3",t:"손님이 검색하는 말로 문구 맞추기",
+   w:`블로그 제목 <b>${BL.titleKw[0].p}%</b>가 '잠실 샌드위치', <b>${BL.titleKw[2].p}%</b>가 '잠봉뵈르'.
+      본문은 혼밥 <b>${BL.ctx[0].p}%</b> · 점심 <b>${BL.ctx[1].p}%</b>입니다.`,
+   h:`플레이스 소개글·인스타 프로필에 <b>'잠실 샌드위치 · 잠봉뵈르 · 혼밥'</b>이 들어가면
+      손님이 치는 말과 우리 문구가 같아집니다. 없는 말을 지어내는 게 아니라 <b>이미 쓰이는 말</b>입니다.`}
+ ];
+ const B=[
+  {n:"B",t:"다시 오시는 분이 100명 중 "+S.jamsil_all.revisit+"명",
+   w:`9월은 <b>${D.jamsilMonthlyRevisit.slice(-1)[0].revisit}%</b>까지 내려갔습니다.
+      맛은 <b>${S.jamsil_all.food}%</b>, 신선도는 <b>${S.jamsil_all.fresh}%</b>가 만족하시니
+      <b>제품이 이유는 아닙니다.</b>`,
+   h:`새 손님이 계속 들어오는 동안은 매출이 버팁니다. 다만 <b>유입이 멈추면 같이 꺼지는 구조</b>라
+      이 가게에서 가장 먼저 손봐야 할 자리인 건 분명합니다.`}
+ ];
+ $("#planA").innerHTML=A.map(card).join("");
+ $("#planB").innerHTML=B.map(card).join("");
+
+ table($("#whyTbl"),
+  ["왜 안 오시는지 — 리뷰에서 확인해 본 것",{t:"언급",r:1},{t:"판정",note:1}],
+  [{c:["우연히 지나가다 들렀다","5%","표본이 적어 판정 불가"]},
+   {c:["집·동네가 근처다","5%","표본이 적어 판정 불가"]},
+   {c:["회사가 근처다","3%","표본이 적어 판정 불가"]},
+   {c:["집이 멀어 아쉽다","1%","2건뿐"]},
+   {c:["또 오겠다고 쓴 리뷰","16%","의향일 뿐 실제 방문은 아님"]},
+   {c:["<b>불만을 적은 리뷰</b>","<b>1건</b>","219건 중 1건. 별점 4.5 미만도 3건뿐"],_c:"hl"},
+   {c:["<b>싫어서 안 오시는 것은 아니다</b>","—","<b>위 한 줄이 이 표에서 가장 확실한 것</b>"],_c:"hl"},
+   {c:["<b>방문 동기를 안 적은 리뷰</b>","<b>대부분</b>","<b>← 원인을 못 세우는 이유</b>"],_c:"wl"}]);
+
+ table($("#planC"),
+  ["확인할 것",{t:"왜 필요한가",note:1},{t:"알면 정해지는 것",note:1}],
+  [{c:["<b>단골이 실제로 얼마나 되나</b>",
+      "리뷰는 쓰신 분만 셉니다. 얼굴 아는 손님 비중은 대표님만 아십니다",
+      "<b>재방문이 진짜 낮은지</b>, 아니면 리뷰에만 안 잡히는지"],_c:"wl"},
+   {c:["<b>손님이 동네 분인가 들르는 분인가</b>",
+      "리뷰에 방문 동기를 적은 분이 거의 없어 셀 수가 없었습니다",
+      "동네 손님이면 <b>다시 올 이유</b>를, 들르는 손님이면 <b>더 많은 신규</b>를 봐야 합니다"],_c:"wl"},
+   {c:["<b>7월 vs 8월 매출</b>",
+      "영수증 리뷰가 7월 34건 → <b>8월 96건</b>인데 손님이 는 건지 리뷰만 는 건지 모릅니다",
+      "8월에 하신 게 효과가 있었는지"]},
+   {c:["<b>8월 블로그 집행 여부·비용</b>",
+      "두 점포가 같은 달에 함께 뛰었습니다. 역삼점은 그전 여덟 달을 0건으로 쉬었고요",
+      "쓴 돈 대비 얼마가 돌아왔는지"]},
+   {c:["<b>리뷰 이벤트(아이스티) 원가·소진량</b>",
+      `블로그 ${BL.trust.event}건이 적어 놨습니다. 이미 돌아가는 장치인데 저희 자료엔 빠져 있었습니다`,
+      "리뷰 한 건 받는 데 드는 돈"]},
+   {c:["<b>4월 이후 직원·키오스크 변화</b>",
+      `'친절해요'가 잠실점 ${S.jamsil_peak.kind}%→${S.jamsil_all.kind}%,
+       역삼점은 3년에 걸쳐 62%→16%. <b>두 점포 공통</b>이라 매장 탓으로 보긴 어렵습니다`,
+      "손님이 응대를 겪을 자리 자체가 줄었는지"]},
+   {c:["<b>2023년 하반기~작년 왜 조용했나</b>",
+      "리뷰가 월 42건에서 <b>월 1~5건으로 28개월</b> 내려앉아 있었습니다",
+      "그때 꺼뜨린 원인이 그대로면 <b>지금 올라온 것도 같은 자리에서 꺼집니다</b>"]}]);
+
+ table($("#planSum"),
+  ["",{t:"무엇을"},{t:"드는 돈"},{t:"누가 정하나",note:1}],
+  [{c:["A","주차·커피·검색어 문구 정리","0원","<b>바로 하면 됩니다</b>"],_c:"hl"},
+   {c:["B","재방문 — <b>방법은 아직 안 정함</b>","—","C가 채워진 뒤 <b>대표님과 같이</b>"],_c:"wl"},
+   {c:["C","위 7가지 확인","0원","대표님"]},
+   {c:["—","3개월 뒤 리뷰 다시 내려받아 비교","0원","같은 방법으로 재수집"]}]);
+}
+</script>
+
+</body>
+</html>
