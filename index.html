@@ -41,7 +41,6 @@ body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans
 
 /* 헤더 */
 .masthead{padding-block:30px 0}
-.eyebrow{font-size:12.5px; color:var(--ink-3); margin:0 0 6px}
 .masthead h1{margin:0; font-size:clamp(26px,5.2vw,38px); font-weight:700; letter-spacing:-0.06px}
 .masthead .lede{margin:10px 0 0; color:var(--ink-2); max-width:56ch; font-size:14.5px}
 .legend{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px}
@@ -204,7 +203,6 @@ footer{margin-top:26px; padding-top:16px; border-top:1px solid var(--rule); font
 
 <div class="wrap">
 <header class="masthead">
-  <p class="eyebrow">2026년 9월 13일 · 함수정 정리</p>
   <h1>타운샌드위치 네이버 리뷰</h1>
   <p class="lede">잠실점·역삼점에 쌓인 리뷰 <b>1,097건</b>을 전부 내려받아 읽었습니다.
      손님이 뭘 좋아하고 뭘 안 쓰는지, 작년 같은 기간과 견줘 어떻게 달라졌는지 정리했습니다.</p>
@@ -459,7 +457,7 @@ footer{margin-top:26px; padding-top:16px; border-top:1px solid var(--rule); font
   </div>
 </div>
 
-<footer>네이버 지도 공개 리뷰를 정리한 자료입니다 · 2026-09-13 기준 · 문의 함수정</footer>
+<footer id="foot">네이버 지도 공개 리뷰를 정리한 자료입니다</footer>
 </div>
 
 <script>
@@ -550,6 +548,14 @@ function dbars(node,rows,hiFn){
     node.appendChild(row);
   });
   node.appendChild(el("div","lgd",'<span><i class="p"></i>2025년</span><span><i class="c"></i>2026년</span>'));
+}
+
+/* 푸터 — 기준일은 스냅샷에서 받는다 (하드코딩하면 다음 주에 안 바뀐다) */
+{
+ const last=SN.length?SN[SN.length-1]:null;
+ $("#foot").textContent = last
+   ? `네이버 지도 공개 리뷰를 정리한 자료입니다 · ${last.tuesday} 기준`
+   : "네이버 지도 공개 리뷰를 정리한 자료입니다";
 }
 
 /* 월별 기록 — MoM */
